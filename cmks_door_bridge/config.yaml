@@ -1,0 +1,39 @@
+# Home Assistant add-on manifest. Installed from the add-on repository
+# https://github.com/Cherokee-Makerspace/ha-door-bridge (Settings → Apps → ⋮ → Repositories).
+name: Cherokee Makerspace Door Bridge
+version: "0.1.0"
+slug: cmks_door_bridge
+description: Keeps UniFi Access door users in line with Fabman membership standing.
+url: https://github.com/Cherokee-Makerspace/ha-door-bridge
+arch: [aarch64, amd64]
+startup: application
+boot: auto
+init: false
+options:
+  fabman_api_key: ""
+  fabman_space_id: 1710
+  unifi_host: ""
+  unifi_token: ""
+  unifi_verify_tls: false
+  access_policy_ids: []
+  interval_seconds: 60
+  grace_days: 3
+  max_deactivations_per_run: 3
+  dry_run: true
+  healthcheck_url: ""
+  slack_webhook_url: ""
+  pin_private_key: ""
+schema:
+  fabman_api_key: password
+  fabman_space_id: int
+  unifi_host: str
+  unifi_token: password
+  unifi_verify_tls: bool
+  access_policy_ids: [str]
+  interval_seconds: int(30,3600)
+  grace_days: int(0,60)
+  max_deactivations_per_run: int(1,100)
+  dry_run: bool
+  healthcheck_url: str?
+  slack_webhook_url: str?
+  pin_private_key: password?
