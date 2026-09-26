@@ -138,3 +138,10 @@ def test_two_unifi_users_with_same_email_wait_for_staff():
     us = [{'id': 'a', 'user_email': 'pat@example.com'}, {'id': 'b', 'user_email': 'PAT@example.com'}]
     p = r.plan([m], us, [], {1}, TODAY)
     assert p.actions == [] and 'share this email' in p.waiting[0][1]
+
+
+def test_invoice_without_a_member_is_ignored():
+    # Seen live 2026-09-26: Fabman has unpaid invoices with member = null (walk-in/guest).
+    p = r.plan([member(1, cmks_unifi_user_id='u1')], [user('u1')],
+               [{'member': None, 'date': '2026-09-01', 'state': 'unpaid'}, inv(1, '2026-09-01')], set(), TODAY)
+    assert kinds(p) == [('deactivate', 1)]

@@ -75,6 +75,8 @@ def overdue_members(unpaid_invoices: list[dict], today: date, grace_days: int) -
     for inv in unpaid_invoices:
         if inv.get('state') != 'unpaid':
             continue
+        if inv.get('member') is None:
+            continue  # not a member's invoice (walk-in sale, guest); can't affect door access
         when = inv.get('date') or inv.get('createdAt')
         if when and date.fromisoformat(when[:10]) <= cutoff:
             out.add(int(inv['member']))

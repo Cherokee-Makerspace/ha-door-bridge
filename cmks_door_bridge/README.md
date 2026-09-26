@@ -11,7 +11,21 @@ python -m door_bridge once     # single pass
 python -m door_bridge pubkey   # print the PIN public key for MODX
 ```
 
-## Install on Home Assistant (local add-on)
+## Installed (2026-09-26)
+
+- **Home Assistant** at `192.168.31.110` (Makerspace-Security VLAN), HA OS 18.3. The add-on slug is
+  `bb037f05_cmks_door_bridge`, from the `Cherokee-Makerspace/ha-door-bridge` repository. Boot is
+  auto and the watchdog is on.
+- **UniFi Access 4.3.12** on the UCG Fiber, `unifi_host: 192.168.31.1`. PIN mode: Fixed, 6 digits.
+  - One door, "Makerspace".
+  - One policy, "Full Access" (Default), for Everyone, Always. New users get it automatically, so
+    `access_policy_ids` is empty.
+  - An existing API token is named "Fabman" (never expires).
+- Non-secret options are set; `dry_run: true`. The secrets (`unifi_token`, `fabman_api_key`,
+  `pin_private_key`, `healthcheck_url`) are entered by Alex in the add-on's Configuration tab.
+- A backup was taken just before install: "Before door bridge 2026-09-26" (partial, no /media).
+
+## Install on Home Assistant
 
 1. Settings → Apps → ⋮ → **Repositories** → add `https://github.com/Cherokee-Makerspace/ha-door-bridge`.
 2. Install **Cherokee Makerspace Door Bridge** from the app store.

@@ -1,7 +1,7 @@
 # Home Assistant add-on manifest. Installed from the add-on repository
 # https://github.com/Cherokee-Makerspace/ha-door-bridge (Settings → Apps → ⋮ → Repositories).
 name: Cherokee Makerspace Door Bridge
-version: "0.1.0"
+version: "0.1.1"
 slug: cmks_door_bridge
 description: Keeps UniFi Access door users in line with Fabman membership standing.
 url: https://github.com/Cherokee-Makerspace/ha-door-bridge
